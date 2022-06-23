@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - eXercitiu 1</title>
+    <style>
+        body{background-color: rgb(78, 78, 78);margin: 0 auto;}
+        .container {width: 500px; height: 300px;background-color: rgb(255, 255, 255);position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+        .rezultat {height: 40%;width: 100%;background-color: aquamarine;border-bottom: 1px solid black;}
+        .rezultat div {position: relative;top:40%;text-align: center;margin-right: 10px;font-size: 30px;}
+        label { font-family: 'Courier New', Courier, monospace;font-size: 10px;}
+        input {text-align: center; }
+        .dim{height: 40%; width: 80px;display: inline-block;font-size: 23px;}
+        .input { margin: 40px 20px;}
+        .go {height: 50%;}    
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <div class="rezultat">
+            <div>Introduceti 2 numere in casutele de mai jos si selectati operatiunea.</div>
+        </div>
+        <div class="input1 dim input">
+            <label  for="input1">Input 1</label>
+            <input id="i1" class="dim" type="number" name="input1">
+        </div>
+        <div class="input2 dim input">
+            <label  for="input2">Input 2</label>
+            <input id="i2" class="dim" type="number" name="input2">
+        </div>
+        <div class="operation dim input">
+            <label for="operatiuni">Operatiuni</label>
+           <select class="dim" style="font-size: 20px; height: 45%;" name="operatiuni" id="op">
+               <option disabled hidden selected>-</option>
+               <option value="suma" >Suma</option>
+               <option value="diferenta">Diferenta</option>
+               <option value="produs">Inmultire</option>
+               <option value="impartire">Impartire</option>
+               <!-- <option value="alta1">Impartire</option>
+               <option value="alta2">Impartire</option>
+               <option value="alta3">Impartire</option> -->
+           </select>
+        </div>
+        <div class="go dim input">
+            <button class="dim">GO!</button>
+        </div>
+    </div>
+
+    <script>
+        let input1 = document.getElementById("i1");
+let input2 = document.getElementById("i2");
+let go = document.querySelector(".go button");
+let select = document.querySelector("select");
+let rezultat = document.querySelector(".rezultat div")
+
+// select.addEventListener("change", function(){
+//     let op = select.options[select.selectedIndex].value;
+    
+    go.addEventListener("click", function(){
+        let op = select.value;
+        if(op === "suma"){
+            rezultat.innerText = parseInt(input1.value) + parseInt(input2.value);
+        }else if(op === "diferenta"){
+            rezultat.innerText = parseInt(input1.value) - parseInt(input2.value);
+        }else if(op === "produs"){
+            rezultat.innerText = parseInt(input1.value) * parseInt(input2.value);
+        }else if(op === "impartire"){
+            rezultat.innerText = parseInt(input1.value) / parseInt(input2.value);
+        }
+    })
+// });
+    </script>
+</body>
+</html>
